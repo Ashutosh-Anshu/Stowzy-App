@@ -16,25 +16,25 @@ namespace user_gateway.BLL.Application.Services.Account.DTOs
 
     public class RoomOwnerDTO
     {
-        public string RoomOwnerId { get; set; }
-        public string Title { get; set; }
-        public string FirstName { get; set; }
+        public Guid RoomOwnerId { get; set; }
+        public required string Title { get; set; }
+        public required string FirstName { get; set; }
         public string? LastName { get; set; }
-        public DateTime DateOfBirth { get; set; }
-        public string Gender { get; set; }
-        public string PhoneNumber { get; set; } 
-        public string? SecondryNumber { get; set; }
-        public string Email { get; set; }
-        public bool IsActive { get; set; }
-        public DateTime CreatedDate { get; set; }
-        public DateTime ModifiedDate { get; set; }
-        public bool IsDeleted { get; set; }
-        public string StreetAddress { get; set; }
+        public required DateTime DateOfBirth { get; set; }
+        public required string Gender { get; set; }
+        public required string PhoneNumber { get; set; }
+        public string? SecondaryNumber { get; set; }
+        public required string Email { get; set; }
+        public required bool IsActive { get; set; }
+        public required DateTime CreatedDate { get; set; }
+        public required DateTime ModifiedDate { get; set; }
+        public required bool IsDeleted { get; set; }
+        public required string StreetAddress { get; set; }
         public string? Landmark { get; set; }
-        public string Country { get; set; }
-        public string State { get; set; }
-        public string City { get; set; }
-        public string PostalCode { get; set; }
+        public required string Country { get; set; }
+        public required string State { get; set; }
+        public required string City { get; set; }
+        public required string PostalCode { get; set; }
         public IFormFile? ProfileImage { get; set; }
         public string? Role { get; set; }
     }
@@ -42,29 +42,27 @@ namespace user_gateway.BLL.Application.Services.Account.DTOs
 
     public class RoomDTO
     {
-        public string RoomId { get; set; }
-        public string BusinessName { get; set; }
-        public string BusinessType { get; set; }
-        public int NoOfRooms { get; set; }
-        public string RoomSize { get; set; }
-        public string SecurityMeasures { get; set; }
-        public decimal HourlyRentalPrice { get; set; }
-        public string StreetAddress { get; set; }
+        public Guid RoomId { get; set; }
+        public required string BusinessName { get; set; }
+        public required string BusinessType { get; set; }
+        public required int NoOfRooms { get; set; }
+        public required string RoomSize { get; set; }
+        public required string SecurityMeasures { get; set; }
+        public required decimal HourlyRentalPrice { get; set; }
+        public required string StreetAddress { get; set; }
         public string? Landmark { get; set; }
-        public string Country { get; set; }
-        public string State { get; set; }
-        public string City { get; set; }
-        public string PostalCode { get; set; }
-        public string CurrentLocation { get; set; }
+        public required string Country { get; set; }
+        public required string State { get; set; }
+        public required string City { get; set; }
+        public required string PostalCode { get; set; }
+        public required string CurrentLocation { get; set; }
     }
 
     public class StowzyDocumentsDTO
     {
-        public string DocumentId { get; set; }
-        public string IdentityProofType { get; set; }
-        public IFormFile IdentityProofDocument { get; set; } 
-        public List<IFormFile> StowzyImages { get; set; } = new List<IFormFile>(); 
+        public Guid DocumentId { get; set; }
+        public required string IdentityProofType { get; set; }
+        public required IFormFile IdentityProofDocument { get; set; }
+        public required List<IFormFile> StowzyImages { get; set; } = new List<IFormFile>();
     }
-
-
 }

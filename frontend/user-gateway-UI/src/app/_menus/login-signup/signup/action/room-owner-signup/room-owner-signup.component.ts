@@ -46,53 +46,53 @@ export class RoomOwnerSignupComponent {
     this.onFinalSubmit();
   }
 
-  // onFinalSubmit(): void {
-  //   debugger
-  //   this._roomOwnerService.roomOwnerRegistration(this.roomOwnerRegistration).subscribe({
-  //     next: (response) => {
-  //       console.log('Registration successful:', response);
-  //     },
-  //     error: (error) => {
-  //       console.error('Registration failed:', error);
-  //     }
-  //   });
-  // }
-
   onFinalSubmit(): void {
-    const formData = new FormData();
-  
-    // Append RoomOwner details
-    Object.keys(this.roomOwnerRegistration.roomOwner).forEach((key) => {
-      formData.append(`roomOwner.${key}`, (this.roomOwnerRegistration.roomOwner as any)[key]);
-    });
-  
-    // Append Room details
-    Object.keys(this.roomOwnerRegistration.room).forEach((key) => {
-      formData.append(`room.${key}`, (this.roomOwnerRegistration.room as any)[key]);
-    });
-  
-    // Append StowzyDocuments details
-    Object.keys(this.roomOwnerRegistration.stowzyDocuments).forEach((key) => {
-      const value = (this.roomOwnerRegistration.stowzyDocuments as any)[key];
-      if (key === 'StowzyImages' && Array.isArray(value)) {
-        value.forEach((file: File, index: number) => {
-          formData.append(`stowzyDocuments.StowzyImages[${index}]`, file);
-        });
-      } else if (key === 'IdentityProofDocument' && value instanceof File) {
-        formData.append(`stowzyDocuments.IdentityProofDocument`, value);
-      } else {
-        formData.append(`stowzyDocuments.${key}`, value);
-      }
-    });
-  
-    this._roomOwnerService.roomOwnerRegistration(formData).subscribe({
+    debugger
+    this._roomOwnerService.roomOwnerRegistration(this.roomOwnerRegistration).subscribe({
       next: (response) => {
         console.log('Registration successful:', response);
       },
       error: (error) => {
         console.error('Registration failed:', error);
-      },
+      }
     });
   }
+
+  // onFinalSubmit(): void {
+  //   const formData = new FormData();
+  
+  //   // Append RoomOwner details
+  //   Object.keys(this.roomOwnerRegistration.roomOwner).forEach((key) => {
+  //     formData.append(`roomOwner.${key}`, (this.roomOwnerRegistration.roomOwner as any)[key]);
+  //   });
+  
+  //   // Append Room details
+  //   Object.keys(this.roomOwnerRegistration.room).forEach((key) => {
+  //     formData.append(`room.${key}`, (this.roomOwnerRegistration.room as any)[key]);
+  //   });
+  
+  //   // Append StowzyDocuments details
+  //   Object.keys(this.roomOwnerRegistration.stowzyDocuments).forEach((key) => {
+  //     const value = (this.roomOwnerRegistration.stowzyDocuments as any)[key];
+  //     if (key === 'StowzyImages' && Array.isArray(value)) {
+  //       value.forEach((file: File, index: number) => {
+  //         formData.append(`stowzyDocuments.StowzyImages[${index}]`, file);
+  //       });
+  //     } else if (key === 'IdentityProofDocument' && value instanceof File) {
+  //       formData.append(`stowzyDocuments.IdentityProofDocument`, value);
+  //     } else {
+  //       formData.append(`stowzyDocuments.${key}`, value);
+  //     }
+  //   });
+  
+  //   this._roomOwnerService.roomOwnerRegistration(formData).subscribe({
+  //     next: (response) => {
+  //       console.log('Registration successful:', response);
+  //     },
+  //     error: (error) => {
+  //       console.error('Registration failed:', error);
+  //     },
+  //   });
+  // }
   
 }

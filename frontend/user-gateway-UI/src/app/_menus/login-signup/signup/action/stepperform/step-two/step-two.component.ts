@@ -143,7 +143,7 @@ export class StepTwoComponent implements OnInit {
         (position) => {
           const latitude = position.coords.latitude;
           const longitude = position.coords.longitude;
-          this.stepTwoForm.controls['CurrentLocation'].setValue(`${latitude},${longitude}`);
+          this.stepTwoForm.controls['currentLocation'].setValue(`${latitude},${longitude}`);
         },
         (error) => {
           switch (error.code) {

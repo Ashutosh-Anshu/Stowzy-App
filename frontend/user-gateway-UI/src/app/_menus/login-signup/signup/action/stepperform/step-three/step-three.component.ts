@@ -47,20 +47,20 @@ export class StepThreeComponent {
   uploadDocumentProof(files: File[]): void {
     this.IdentityProofDocument = files;
     if (this.IdentityProofDocument.length > 0) {
-      this.stepThreeForm.controls['IdentityProofDocument'].setValue(files);
-      this.stepThreeForm.controls['IdentityProofDocument'].setErrors(null);
+      this.stepThreeForm.controls['identityProofType'].setValue(files);
+      this.stepThreeForm.controls['identityProofType'].setErrors(null);
     } else {
-      this.stepThreeForm.controls['IdentityProofDocument'].setErrors({ required: true });
+      this.stepThreeForm.controls['identityProofType'].setErrors({ required: true });
     }
   }
 
   handleStowzyImages(files: File[]): void {
     this.StowzyImages = files;
     if (this.StowzyImages.length > 0) {
-      this.stepThreeForm.controls['StowzyImages'].setValue(files);
-      this.stepThreeForm.controls['StowzyImages'].setErrors(null);
+      this.stepThreeForm.controls['stowzyImages'].setValue(files);
+      this.stepThreeForm.controls['stowzyImages'].setErrors(null);
     } else {
-      this.stepThreeForm.controls['StowzyImages'].setErrors({ required: true });
+      this.stepThreeForm.controls['stowzyImages'].setErrors({ required: true });
     }
   }
 

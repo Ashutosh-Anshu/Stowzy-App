@@ -26,7 +26,8 @@ export class RoomOwnerService {
   //   });
   // }
 
-  roomOwnerRegistration(data: FormData): Observable<any> {
+  roomOwnerRegistration(data: RoomOwnerRegistration): Observable<any> {
+    debugger
     return this.httpClient.post(`${this.baseUrl}roomOwnerRegistration`, data);
   }
   
