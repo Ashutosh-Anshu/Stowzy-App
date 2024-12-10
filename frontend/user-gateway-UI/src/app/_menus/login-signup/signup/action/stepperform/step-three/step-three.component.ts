@@ -39,18 +39,18 @@ export class StepThreeComponent {
   private initializeForm(): void {
     this.stepThreeForm = this.fb.group({
       identityProofType: ['', Validators.required],
-      identityProofDocument: ['', Validators.required],
-      stowzyImages: ['', Validators.required],
+      identityProofDocument: [null, Validators.required],
+      stowzyImages: [null, Validators.required],
     });
   }
 
   uploadDocumentProof(files: File[]): void {
     this.IdentityProofDocument = files;
     if (this.IdentityProofDocument.length > 0) {
-      this.stepThreeForm.controls['identityProofType'].setValue(files);
-      this.stepThreeForm.controls['identityProofType'].setErrors(null);
+      this.stepThreeForm.controls['identityProofDocument'].setValue(files);
+      this.stepThreeForm.controls['identityProofDocument'].setErrors(null);
     } else {
-      this.stepThreeForm.controls['identityProofType'].setErrors({ required: true });
+      this.stepThreeForm.controls['identityProofDocument'].setErrors({ required: true });
     }
   }
 

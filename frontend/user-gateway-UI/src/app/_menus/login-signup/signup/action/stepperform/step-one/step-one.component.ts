@@ -56,7 +56,7 @@ export class StepOneComponent implements OnInit {
       city: ['', Validators.required],
       postalCode: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(6), Validators.pattern(/^[0-9]*$/)]],
       profileImage: [null],
-      password: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(20)]],
+      password: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(1)]],
       confirmPassword: ['', [Validators.required, this._apiService.matchValues('password')]],
     });
     this.stepOneForm.controls['password'].valueChanges.subscribe({

@@ -47,7 +47,6 @@ export class RoomOwnerSignupComponent {
   }
 
   onFinalSubmit(): void {
-    debugger
     this._roomOwnerService.roomOwnerRegistration(this.roomOwnerRegistration).subscribe({
       next: (response) => {
         console.log('Registration successful:', response);

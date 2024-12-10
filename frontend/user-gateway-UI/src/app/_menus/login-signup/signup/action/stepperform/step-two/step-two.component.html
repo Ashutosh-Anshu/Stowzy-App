@@ -84,8 +84,8 @@
           </div>
           <div class="col-md-6 mb-1">
             <label for="ro-st-hourlyRentalPrice" class="form-label ps-1">Hourly Rate<span class="asterisk">*</span></label>
-            <input type="number" class="form-control" id="ro-st-hourlyRentalPrice" formControlName="securityMeasures" placeholder="Enter the Rs/hr" min="1" />
-            <span class="error" *ngIf="(stepTwoForm.controls['securityMeasures'].hasError('required')) && formRef.submitted">
+            <input type="number" class="form-control" id="ro-st-hourlyRentalPrice" formControlName="hourlyRentalPrice" placeholder="Enter the Rs/hr" min="1" />
+            <span class="error" *ngIf="(stepTwoForm.controls['hourlyRentalPrice'].hasError('required')) && formRef.submitted">
               Please specify the hourly rate for the room (between 1 and 99).
             </span>
           </div>
@@ -95,8 +95,8 @@
         <div class="row">
           <div class="col-md-6 mb-1">
             <label for="ro-st-streetAddress" class="form-label ps-1">Street Address<span class="asterisk">*</span></label>
-            <input type="text" class="form-control" id="ro-st-streetAddress" formControlName="securityMeasures" placeholder="Enter Street Address" />
-            <span class="error" *ngIf="stepTwoForm.controls['securityMeasures'].hasError('required') && formRef.submitted">Please enter street address</span>
+            <input type="text" class="form-control" id="ro-st-streetAddress" formControlName="streetAddress" placeholder="Enter Street Address" />
+            <span class="error" *ngIf="stepTwoForm.controls['streetAddress'].hasError('required') && formRef.submitted">Please enter street address</span>
           </div>
           <div class="col-md-6 mb-1">
             <label for="ro-st-landmark" class="form-label ps-1">Landmark</label>
