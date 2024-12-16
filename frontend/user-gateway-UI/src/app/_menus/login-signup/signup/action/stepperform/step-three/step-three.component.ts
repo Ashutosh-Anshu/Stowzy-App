@@ -47,7 +47,7 @@ export class StepThreeComponent {
   uploadDocumentProof(files: File[]): void {
     this.IdentityProofDocument = files;
     if (this.IdentityProofDocument.length > 0) {
-      this.stepThreeForm.controls['identityProofDocument'].setValue(files);
+      this.stepThreeForm.controls['identityProofDocument'].setValue(files[0]);
       this.stepThreeForm.controls['identityProofDocument'].setErrors(null);
     } else {
       this.stepThreeForm.controls['identityProofDocument'].setErrors({ required: true });

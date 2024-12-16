@@ -168,7 +168,6 @@ export class StepTwoComponent implements OnInit {
 
   stepTwoSubmit() {
     if (this.stepTwoForm.valid) {
-      debugger
       const formData = this.stepTwoForm.value;
       this.stepTwoSubmitted.emit(formData);
     }
