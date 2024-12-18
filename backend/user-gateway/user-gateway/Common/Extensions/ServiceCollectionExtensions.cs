@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using user_gateway.BLL.Application.Helpers;
 using user_gateway.BLL.Application.Services.Account;
 using user_gateway.DAL.Infrastructure.Persistence;
 using user_gateway.DAL.Infrastructure.Repositories.Account;
@@ -15,18 +16,24 @@ namespace user_gateway.Common.Extensions
                 options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
             });
             services.AddCors();
+            services.Configure<CloudinarySettings>(configuration.GetSection("CloudinarySettings"));
 
-            //Repositories here
+            // Common 
+            services.AddScoped<ICloudinaryService, CloudinaryService>();
 
+            // Repositories here
             services.AddScoped<IAccountRepository, AccountRepository>();
 
-
-            //Services here
+            // Services here
             services.AddScoped<IAccountService, AccountService>();
 
+            // AutoMapper
+            services.AddAutoMapper(typeof(Program)); // Replace 'Program' if necessary
 
             return services;
-
         }
+
+
+
     }
 }

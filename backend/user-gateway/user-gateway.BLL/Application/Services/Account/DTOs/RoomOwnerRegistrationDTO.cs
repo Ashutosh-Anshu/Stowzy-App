@@ -1,13 +1,15 @@
 ﻿using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using user_gateway.Domain.Entities.Account;
 
 namespace user_gateway.BLL.Application.Services.Account.DTOs
 {
-    public class RoomOwnerRegistrationDTO
+    public class RegisterRoomOwnerDTO
     {
         public RoomOwnerDTO? roomOwner { get; set; }
         public RoomDTO? room { get; set; }
@@ -66,5 +68,21 @@ namespace user_gateway.BLL.Application.Services.Account.DTOs
         public IFormFile? IdentityProofDocument { get; set; }
         public List<IFormFile> StowzyImages { get; set; } = new List<IFormFile>();
     }
-    
+
+    public class RoomOwnerLoginDTO
+    {
+        public Guid LoginId { get; set; }
+        public Guid RoomOwnerId { get; set; }
+        public RoomOwner RoomOwner { get; set; } = null!;
+        public string? PhoneNumber { get; set; }
+        public string? Email { get; set; }
+        public string? Password { get; set; }
+        public bool? IsActive { get; set; } = true;
+        public DateTime CreatedDate { get; set; }
+        public Guid RoleId { get; set; }
+    }
+
+
+
+
 }

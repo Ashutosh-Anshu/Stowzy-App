@@ -8,6 +8,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
+    <PackageReference Include="CloudinaryDotNet" Version="1.27.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\user-gateway.DAL\user-gateway.DAL.csproj" />
     <ProjectReference Include="..\user-gateway.Domain\user-gateway.Domain.csproj" />
   </ItemGroup>

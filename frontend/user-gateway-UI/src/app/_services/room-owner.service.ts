@@ -14,7 +14,7 @@ export class RoomOwnerService {
 
 
   roomOwnerRegistration(data: FormData): Observable<any> {
-    return this.httpClient.post(`${this.baseUrl}roomOwnerRegistration`, data);
+    return this.httpClient.post(`${this.baseUrl}registerRoomOwner`, data);
   }
   
   

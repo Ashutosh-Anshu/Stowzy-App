@@ -19,10 +19,10 @@ namespace user_gateway.Domain.Entities.Account
         public required string IdentityProofType { get; set; }
 
         [Required]
-        public required IFormFile IdentityProofDocument { get; set; }
+        public required string IdentityProofDocumentPath { get; set; }
 
         [Required]
-        public required List<IFormFile> StowzyImages { get; set; }
+        public required string StowzyImagesPath { get; set; }
 
         public Guid RoomOwnerId { get; set; }
         public RoomOwner RoomOwner { get; set; } = null!;

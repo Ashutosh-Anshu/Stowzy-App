@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using user_gateway.BLL.Application.Services.Account;
 using user_gateway.BLL.Application.Services.Account.DTOs;
+using user_gateway.Common.Responses;
 using user_gateway.Domain.Entities;
 
 namespace user_gateway.Controllers
@@ -19,16 +20,22 @@ namespace user_gateway.Controllers
 
 
         [HttpPost]
-        [Route("roomOwnerRegistration")]
-        public async Task<IActionResult> RoomOwnerRegistration([FromForm] RoomOwnerRegistrationDTO roomOwnerRegistration)
+        [Route("registerRoomOwner")]
+        public async Task<IActionResult> RegisterRoomOwner([FromForm] RegisterRoomOwnerDTO registerRoomOwner)
         {
             if (!ModelState.IsValid)
             {
-                return BadRequest(ModelState);
+                return BadRequest(new ApiMessageResponse("Invalid data", false, 400, ModelState));
             }
 
-            
-            return Ok("Data received successfully");
+            var result = await _accountService.RegisterRoomOwner(registerRoomOwner);
+
+            if (!result)
+            {
+                return StatusCode(500, new ApiMessageResponse("Failed to register room owner", false, 500));
+            }
+
+            return Ok(new ApiMessageResponse("Room owner registered successfully", true, 201));
         }
     }
 }

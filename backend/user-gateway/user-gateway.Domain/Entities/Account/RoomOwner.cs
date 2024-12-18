@@ -54,11 +54,11 @@ namespace user_gateway.Domain.Entities.Account
         [Required]
         public required string PostalCode { get; set; }
 
-        public IFormFile? ProfileImage { get; set; }
+        public string? ProfileImagePath { get; set; }
         public string? Role { get; set; }
 
-        public ICollection<Room> Rooms { get; set; } = new List<Room>();
+        public List<Room>? Rooms { get; set; } 
         public RoomOwnerLogin? RoomOwnerLogin { get; set; }
-        public ICollection<StowzyDocument> StowzyDocuments { get; set; } = new List<StowzyDocument>();
+        public List<StowzyDocument>? StowzyDocuments { get; set; } 
     }
 }
