@@ -2,13 +2,13 @@ import { CdkStepperModule } from '@angular/cdk/stepper';
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FileUploadComponent } from "../../../../../../_common/file-upload/file-upload.component";
-import { StowzyDocuments } from '../../../../../../_model/RoomOwner/business-documents';
 import {
   FormBuilder,
   FormGroup,
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { LockerDocument } from '../../../../../../_model/Owner/business-documents';
 
 @Component({
   selector: 'app-step-three',
@@ -18,12 +18,12 @@ import {
   styleUrl: './step-three.component.css',
 })
 export class StepThreeComponent {
-  @Output() stepThreeSubmitted = new EventEmitter<StowzyDocuments>();
+  @Output() stepThreeSubmitted = new EventEmitter<LockerDocument>();
 
   public stepThreeForm!: FormGroup;
   state: string = '';
-  StowzyImages: File[] = [];
-  IdentityProofDocument: File[] = [];
+  LockerImages: File[] = [];
+  documentProofFile: File[] = [];
 
   proofOfIdentityOptions = [
     { id: 1, value: 'Aadhaar Card (India-specific)', label: "Aadhaar Card (India-specific)" },
@@ -38,29 +38,29 @@ export class StepThreeComponent {
 
   private initializeForm(): void {
     this.stepThreeForm = this.fb.group({
-      identityProofType: ['', Validators.required],
-      identityProofDocument: [null, Validators.required],
-      stowzyImages: [null, Validators.required],
+      documentProofType: ['', Validators.required],
+      documentProofFile: [null, Validators.required],
+      lockerImages: [null, Validators.required],
     });
   }
 
   uploadDocumentProof(files: File[]): void {
-    this.IdentityProofDocument = files;
-    if (this.IdentityProofDocument.length > 0) {
-      this.stepThreeForm.controls['identityProofDocument'].setValue(files[0]);
-      this.stepThreeForm.controls['identityProofDocument'].setErrors(null);
+    this.documentProofFile = files;
+    if (this.documentProofFile.length > 0) {
+      this.stepThreeForm.controls['documentProofFile'].setValue(files[0]);
+      this.stepThreeForm.controls['documentProofFile'].setErrors(null);
     } else {
-      this.stepThreeForm.controls['identityProofDocument'].setErrors({ required: true });
+      this.stepThreeForm.controls['documentProofFile'].setErrors({ required: true });
     }
   }
 
-  handleStowzyImages(files: File[]): void {
-    this.StowzyImages = files;
-    if (this.StowzyImages.length > 0) {
-      this.stepThreeForm.controls['stowzyImages'].setValue(files);
-      this.stepThreeForm.controls['stowzyImages'].setErrors(null);
+  handleLockerImages(files: File[]): void {
+    this.LockerImages = files;
+    if (this.LockerImages.length > 0) {
+      this.stepThreeForm.controls['lockerImages'].setValue(files);
+      this.stepThreeForm.controls['lockerImages'].setErrors(null);
     } else {
-      this.stepThreeForm.controls['stowzyImages'].setErrors({ required: true });
+      this.stepThreeForm.controls['lockerImages'].setErrors({ required: true });
     }
   }
 

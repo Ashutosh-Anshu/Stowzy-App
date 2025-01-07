@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using user_gateway.BLL.Application.Helpers;
+using user_gateway.BLL.Application.Mappings;
 using user_gateway.BLL.Application.Services.Account;
 using user_gateway.DAL.Infrastructure.Persistence;
 using user_gateway.DAL.Infrastructure.Repositories.Account;
@@ -28,7 +29,7 @@ namespace user_gateway.Common.Extensions
             services.AddScoped<IAccountService, AccountService>();
 
             // AutoMapper
-            services.AddAutoMapper(typeof(Program)); // Replace 'Program' if necessary
+            services.AddAutoMapper(typeof(OwnerMappingProfile));// Replace 'Program' if necessary
 
             return services;
         }

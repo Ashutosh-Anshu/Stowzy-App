@@ -1,9 +1,9 @@
-export interface Room {
-    roomId: string;
+export interface Locker {
+    lockerId: string;
     businessName: string;
     businessType: string;
-    noOfRooms: number;
-    roomSize: string;
+    noOflockers: number;
+    lockerSize: string;
     securityMeasures: string;
     hourlyRentalPrice: number;
     streetAddress: string;

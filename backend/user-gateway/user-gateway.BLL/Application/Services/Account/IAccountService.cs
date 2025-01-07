@@ -10,6 +10,6 @@ namespace user_gateway.BLL.Application.Services.Account
 {
     public interface IAccountService
     {
-        Task<bool> RegisterRoomOwner(RegisterRoomOwnerDTO registerRoomOwner);
+        Task<bool> RegisterOwner(RegisterOwnerDTO registerOwner);
     }
 }

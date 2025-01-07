@@ -9,6 +9,6 @@ namespace user_gateway.Domain.Enums
     public enum UserType
     {
         Guest,
-        RoomOwner
+        Owner
     }
 }

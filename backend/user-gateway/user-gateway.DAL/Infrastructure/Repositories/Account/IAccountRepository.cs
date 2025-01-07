@@ -9,6 +9,6 @@ namespace user_gateway.DAL.Infrastructure.Repositories.Account
 {
     public interface IAccountRepository
     {
-        Task<bool> RegisterRoomOwner(RoomOwner roomOwner);
+        Task<bool> RegisterOwner(Owner owner);
     }
 }

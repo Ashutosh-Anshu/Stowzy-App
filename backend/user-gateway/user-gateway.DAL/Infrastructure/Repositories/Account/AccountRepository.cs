@@ -16,12 +16,7 @@ namespace user_gateway.DAL.Infrastructure.Repositories.Account
             _dataContext = dataContext;
         }
 
-        public Task<bool> RegisterRoomOwner(RoomOwner roomOwner)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<bool> RoomOwnerRegistration(RoomOwner roomOwner)
+        public Task<bool> RegisterOwner(Owner owner)
         {
             throw new NotImplementedException();
         }

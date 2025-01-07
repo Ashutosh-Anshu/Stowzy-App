@@ -1,5 +1,5 @@
-export interface RoomOwner {
-    roomOwnerId: string;
+export interface Owner {
+    OwnerId: string;
     title: string;
     firstName: string;
     lastName?: string;

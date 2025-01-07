@@ -31,31 +31,31 @@
 
         <div class="row">
           <div class="col-md-6 mb-1">
-            <label for="ro-st-noOfRooms" class="form-label ps-1">Number of Rooms Available<span class="asterisk">*</span></label>
-            <input type="number" class="form-control" id="ro-st-noOfRooms" formControlName="noOfRooms" placeholder="Enter the number of rooms" min="1" />
-            <span class="error" *ngIf="(stepTwoForm.controls['noOfRooms'].hasError('required')
-                                      || stepTwoForm.controls['noOfRooms'].hasError('min')
-                                        || stepTwoForm.controls['noOfRooms'].hasError('max')) && formRef.submitted">
-              Please specify the number of rooms (between 1 and 99).
+            <label for="ro-st-noOfLockers" class="form-label ps-1">Number of Lockers Available<span class="asterisk">*</span></label>
+            <input type="number" class="form-control" id="ro-st-noOfLockers" formControlName="noOfLockers" placeholder="Enter the number of lockers" min="1" />
+            <span class="error" *ngIf="(stepTwoForm.controls['noOfLockers'].hasError('required')
+                                      || stepTwoForm.controls['noOfLockers'].hasError('min')
+                                        || stepTwoForm.controls['noOfLockers'].hasError('max')) && formRef.submitted">
+              Please specify the number of lockers (between 1 and 99).
             </span>
           </div>
           <div class="col-md-6 mb-1">
-            <label for="ro-st-roomSize" class="form-label ps-1">Room Size<span class="asterisk">*</span></label>
+            <label for="ro-st-lockerSize" class="form-label ps-1">Locker Size<span class="asterisk">*</span></label>
             <div class="dropdown">
-              <button class="btn text-start multiSelectDropdowns w-100" type="button" style="background-color: white;" id="ro-st-roomSize" data-bs-toggle="dropdown" aria-expanded="true">
-                {{ selectedRoomSizes.length > 0 ? 'Selected (' + selectedRoomSizes.length + ')' : 'Select Room Size' }}
+              <button class="btn text-start multiSelectDropdowns w-100" type="button" style="background-color: white;" id="ro-st-lockerSize" data-bs-toggle="dropdown" aria-expanded="true">
+                {{ selectedLockerSizes.length > 0 ? 'Selected (' + selectedLockerSizes.length + ')' : 'Select Locker Size' }}
                 <span class="float-end"><i class="fa-solid fa-angle-down"></i></span>
               </button>
-              <ul class="dropdown-menu w-100 p-3" id="ro-st-RoomSize">
-                <li *ngFor="let option of roomSizeOptions">
+              <ul class="dropdown-menu w-100 p-3" id="ro-st-LockerSize">
+                <li *ngFor="let option of lockerSizeOptions">
                   <div class="form-check">
-                    <input class="form-check-input" type="checkbox" [value]="option.value" [id]="'roomSize_' + option.id" [checked]="selectedRoomSizes.includes(option.value)" (change)="onRoomSizeChange($event, option)">
-                    <label class="form-check-label ps-2" [for]="'roomSize_' + option.id">{{ option.label }}</label>
+                    <input class="form-check-input" type="checkbox" [value]="option.value" [id]="'lockerSize_' + option.id" [checked]="selectedLockerSizes.includes(option.value)" (change)="onLockerSizeChange($event, option)">
+                    <label class="form-check-label ps-2" [for]="'lockerSize_' + option.id">{{ option.label }}</label>
                   </div>
                 </li>
               </ul>
             </div>
-            <span class="error" *ngIf="stepTwoForm.controls['roomSize'].hasError('required') && formRef.submitted">Please select a room size.</span>
+            <span class="error" *ngIf="stepTwoForm.controls['lockerSize'].hasError('required') && formRef.submitted">Please select a locker size.</span>
           </div>
         </div>
 
@@ -86,7 +86,7 @@
             <label for="ro-st-hourlyRentalPrice" class="form-label ps-1">Hourly Rate<span class="asterisk">*</span></label>
             <input type="number" class="form-control" id="ro-st-hourlyRentalPrice" formControlName="hourlyRentalPrice" placeholder="Enter the Rs/hr" min="1" />
             <span class="error" *ngIf="(stepTwoForm.controls['hourlyRentalPrice'].hasError('required')) && formRef.submitted">
-              Please specify the hourly rate for the room (between 1 and 99).
+              Please specify the hourly rate for the locker (between 1 and 99).
             </span>
           </div>
 
@@ -156,7 +156,7 @@
           <input type="text" for="ro-st-currentLocation" formControlName="currentLocation" class="form-control d-none" id="currentLocation">
           <button class="btn btn-primary w-100" type="button" (click)="uploadCurrentLocation()">Please upload current location</button>
           <span class="error" *ngIf="stepTwoForm.controls['currentLocation'].hasError('required') && formRef.submitted">
-            The room's location is required to complete this step.
+            The locker's location is required to complete this step.
           </span>
         </div>
 

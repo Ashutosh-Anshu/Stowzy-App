@@ -20,22 +20,22 @@ namespace user_gateway.Controllers
 
 
         [HttpPost]
-        [Route("registerRoomOwner")]
-        public async Task<IActionResult> RegisterRoomOwner([FromForm] RegisterRoomOwnerDTO registerRoomOwner)
+        [Route("registerOwner")]
+        public async Task<IActionResult> RegisterOwner([FromForm] RegisterOwnerDTO registerOwner)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(new ApiMessageResponse("Invalid data", false, 400, ModelState));
             }
 
-            var result = await _accountService.RegisterRoomOwner(registerRoomOwner);
+            var result = await _accountService.RegisterOwner(registerOwner);
 
             if (!result)
             {
-                return StatusCode(500, new ApiMessageResponse("Failed to register room owner", false, 500));
+                return StatusCode(500, new ApiMessageResponse("Failed to register owner", false, 500));
             }
 
-            return Ok(new ApiMessageResponse("Room owner registered successfully", true, 201));
+            return Ok(new ApiMessageResponse("owner registered successfully", true, 201));
         }
     }
 }

@@ -2,7 +2,6 @@ import { CdkStepperModule } from '@angular/cdk/stepper';
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, OnInit, Output, output } from '@angular/core';
 import { ApiService } from '../../../../../../_services/api.service';
-import { Room } from '../../../../../../_model/RoomOwner/room';
 
 import {
   FormBuilder,
@@ -10,6 +9,8 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { Locker } from '../../../../../../_model/Owner/locker';
+
 
 
 @Component({
@@ -25,13 +26,13 @@ export class StepTwoComponent implements OnInit {
   public countries: any[] = [];
   public states: any[] = [];
   public cities: any[] = [];
-  selectedRoomSizes: string[] = [];
+  selectedLockerSizes: string[] = [];
   selectedSecurityMeasures: string[] = [];
 
-  @Output() stepTwoSubmitted = new EventEmitter<Room>();
+  @Output() stepTwoSubmitted = new EventEmitter<Locker>();
 
 
-  roomSizeOptions = [
+  lockerSizeOptions = [
     { id: 1, value: 'Small', label: "Small" },
     { id: 2, value: 'Medium', label: "Medium" },
     { id: 3, value: 'Large', label: "Large" },
@@ -64,8 +65,8 @@ export class StepTwoComponent implements OnInit {
     this.stepTwoForm = this._fb.group({
       businessName: ['', [Validators.required, Validators.maxLength(40)]], 
       businessType: ['', Validators.required],
-      noOfRooms: ['', [Validators.required, Validators.min(1), Validators.max(99)]], 
-      roomSize: ['', Validators.required],
+      noOfLockers: ['', [Validators.required, Validators.min(1), Validators.max(99)]], 
+      lockerSize: ['', Validators.required],
       securityMeasures: ['', Validators.required],
       hourlyRentalPrice: ['', [Validators.required, Validators.min(1)]], 
       streetAddress: ['', Validators.required],
@@ -78,14 +79,14 @@ export class StepTwoComponent implements OnInit {
     });
   }
 
-  onRoomSizeChange(event: Event, option: { id: number; value: string; label: string }): void {
+  onLockerSizeChange(event: Event, option: { id: number; value: string; label: string }): void {
     const checkbox = event.target as HTMLInputElement;
     if (checkbox.checked) {
-      this.selectedRoomSizes.push(option.value);
+      this.selectedLockerSizes.push(option.value);
     } else {
-      this.selectedRoomSizes = this.selectedRoomSizes.filter(value => value !== option.value);
+      this.selectedLockerSizes = this.selectedLockerSizes.filter(value => value !== option.value);
     }
-    this.stepTwoForm.controls['roomSize'].setValue(this.selectedRoomSizes.length > 0 ? this.selectedRoomSizes.join(', ') : null);
+    this.stepTwoForm.controls['lockerSize'].setValue(this.selectedLockerSizes.length > 0 ? this.selectedLockerSizes.join(', ') : null);
   }
 
   onSecurityMeasuresChange(event: Event, option: { id: number; value: string; label: string }): void {

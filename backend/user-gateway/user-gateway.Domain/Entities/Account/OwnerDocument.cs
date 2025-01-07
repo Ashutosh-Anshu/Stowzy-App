@@ -9,22 +9,34 @@ using Microsoft.AspNetCore.Http;
 
 namespace user_gateway.Domain.Entities.Account
 {
-    public class StowzyDocument
+
+    public class OwnerDocument
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid DocumentId { get; set; }
 
         [Required]
-        public required string IdentityProofType { get; set; }
+        public string DocumentProofType { get; set; }
 
         [Required]
-        public required string IdentityProofDocumentPath { get; set; }
+        public string DocumentPublicId { get; set; }
 
         [Required]
-        public required string StowzyImagesPath { get; set; }
+        public string DocumentUrl { get; set; }
 
-        public Guid RoomOwnerId { get; set; }
-        public RoomOwner RoomOwner { get; set; } = null!;
+        [Required]
+        public DateTime CreatedDate { get; set; } = DateTime.UtcNow;
+
+        [Required]
+        public DateTime ModifiedDate { get; set; } = DateTime.UtcNow;
+
+        // Relationships
+        public Guid OwnerId { get; set; }
+
+        public Owner Owner { get; set; } = null!;
+
+
     }
+
 }

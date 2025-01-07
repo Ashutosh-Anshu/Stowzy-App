@@ -8,8 +8,9 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { RoomOwnerService } from '../../../../../../_services/room-owner.service';
-import { RoomOwner } from '../../../../../../_model/RoomOwner/room-owner';
+import { Owner } from '../../../../../../_model/Owner/owner';
+import { OwnerService } from '../../../../../../_services/owner.service';
+
 
 @Component({
   selector: 'app-step-one',
@@ -19,7 +20,7 @@ import { RoomOwner } from '../../../../../../_model/RoomOwner/room-owner';
   styleUrls: ['./step-one.component.css'],
 })
 export class StepOneComponent implements OnInit {
-  @Output() stepOneSubmitted = new EventEmitter<RoomOwner>();
+  @Output() stepOneSubmitted = new EventEmitter<Owner>();
 
   profileImage: string = '/assets/images/login-user/login-user-1.jpg';
   public stepOneForm!: FormGroup;
@@ -31,7 +32,7 @@ export class StepOneComponent implements OnInit {
   constructor(
     private _fb: FormBuilder,
     private _apiService: ApiService,
-    private _roomOwnerService: RoomOwnerService) {
+    private _ownerService: OwnerService) {
     this.initializeForm();
   }
 
@@ -131,26 +132,8 @@ export class StepOneComponent implements OnInit {
 
   stepOneSubmit(): void {
     if (this.stepOneForm.valid) {
-      const formData1 = this.stepOneForm.value;
-      this.stepOneSubmitted.emit(formData1);
-
-      // const formData = new FormData();
-      // Object.keys(this.stepOneForm.controls).forEach((key) => {
-      //   const controlValue = this.stepOneForm.controls[key].value;
-      //   if (controlValue !== null && controlValue !== undefined) {
-      //     formData.append(key, controlValue);
-      //   }
-      // });
-
-      // this._roomOwnerService.roomOwnerRegistration(formData).subscribe({
-      //   next: (response) => {
-      //     console.log('Registration successful:', response);
-      //   },
-      //   error: (error) => {
-      //     console.error('Registration failed:', error);
-      //   }
-      // });
-
+      const formData = this.stepOneForm.value;
+      this.stepOneSubmitted.emit(formData);
     } else {
       console.warn('Form is invalid. Please check the fields.');
     }

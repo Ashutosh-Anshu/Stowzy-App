@@ -1,0 +1,62 @@
+<p>owner works!</p>
+<section class="navbar-section">
+    <div class="container">
+      <nav class="navbar navbar-expand nav-color fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="#">
+            <img src="./assets/images/logos/main-logo.png" class="rounded-circle" alt="" />
+          </a>
+          <ul class="navbar-nav me-auto">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+          </ul>
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link active" href="#" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </section>
+  <section class="image-section mt-5">
+    <div class="text-center">
+      <img src="./assets/images/rm-owner-login/rm-login-pic-1.jpg" class="img-fluid" alt="Main Image" />
+    </div>
+  </section>
+  <section class="stepper-form mb-5">
+    <div class="main">
+      <div class="header text-center my-2">
+        <h1>Locker Owner Registration</h1>
+        <p class="text-muted">Complete the steps below to register as owner on Stowzy.</p>
+      </div>
+  
+      <ng-stepper #cdkStepper [linear]="true">
+        <cdk-step [stepControl]="stepOne.stepOneForm" [optional]="false">
+          <ng-template cdkStepLabel>
+            <div class="step-bullet"><i class="fa-solid fa-address-card"></i></div>
+            <div class="step-title">Personal Details</div>
+          </ng-template>
+          <app-step-one #stepOne (stepOneSubmitted)="onStepOneSubmit($event)"></app-step-one>
+        </cdk-step>
+  
+        <cdk-step [stepControl]="stepTwo.stepTwoForm" [optional]="false">
+          <ng-template cdkStepLabel>
+            <div class="step-bullet"><i class="fa-solid fa-hotel"></i></div>
+            <div class="step-title">Storage Details</div>
+          </ng-template>
+          <app-step-two #stepTwo (stepTwoSubmitted)="onStepTwoSubmit($event)"></app-step-two>
+        </cdk-step>
+  
+        <cdk-step [stepControl]="stepThree.stepThreeForm" [optional]="false" [state]="stepThree.state">
+          <ng-template cdkStepLabel>
+            <div class="step-bullet"><i class="fa-solid fa-file"></i></div>
+            <div class="step-title">Upload Documents</div>
+          </ng-template>
+          <app-step-three #stepThree (stepThreeSubmitted)="onStepThreeSubmit($event)"></app-step-three>
+        </cdk-step>
+      </ng-stepper>
+    </div>
+  
+  </section>
