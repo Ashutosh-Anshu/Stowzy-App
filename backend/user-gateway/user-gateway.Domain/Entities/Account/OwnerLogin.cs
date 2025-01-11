@@ -11,7 +11,6 @@ namespace user_gateway.Domain.Entities.Account
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid LoginId { get; set; }
 
-
         [Required]
         public string Email { get; set; }
 
@@ -20,8 +19,12 @@ namespace user_gateway.Domain.Entities.Account
 
         [Required]
         public string PasswordHash { get; set; }
+        
+        [Required]
+        public string PasswordSalt { get; set; }
 
         public string ProfileUrl { get; set; }
+
         public string ProfileUrlPublicId { get; set; }
 
         public bool IsActive { get; set; } = true;
@@ -32,7 +35,7 @@ namespace user_gateway.Domain.Entities.Account
         public Owner Owner { get; set; } = null!;
 
         public Guid RoleId { get; set; }
-        public Role Role { get; set; } = null!;
+        public SYS_Role Role { get; set; } = null!;
 
 
     }

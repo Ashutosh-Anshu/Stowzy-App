@@ -2,8 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using user_gateway.BLL.Application.Services.Account;
 using user_gateway.BLL.Application.Services.Account.DTOs;
-using user_gateway.Common.Responses;
-using user_gateway.Domain.Entities;
+using user_gateway.Common.Helpers;
 
 namespace user_gateway.Controllers
 {
@@ -30,12 +29,7 @@ namespace user_gateway.Controllers
 
             var result = await _accountService.RegisterOwner(registerOwner);
 
-            if (!result)
-            {
-                return StatusCode(500, new ApiMessageResponse("Failed to register owner", false, 500));
-            }
-
-            return Ok(new ApiMessageResponse("owner registered successfully", true, 201));
+            return Ok(result);
         }
     }
 }

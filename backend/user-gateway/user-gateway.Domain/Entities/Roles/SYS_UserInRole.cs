@@ -4,19 +4,17 @@ using user_gateway.Domain.Entities.Account;
 
 namespace user_gateway.Domain.Entities.Roles
 {
-    public class UserRole
+    public class SYS_UserInRole
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public Guid UserRoleId { get; set; }
-
-        [Required]
+       
         public Guid UserId { get; set; }
 
-        [Required]
         public Guid RoleId { get; set; }
 
-        public Role? Role { get; set; }
+        public SYS_Role Sys_Role { get; set; }
+
+        public string UserLevelType { get; set; }
+
     }
 
 

@@ -17,4 +17,5 @@ namespace user_gateway.BLL.Application.Services.Account.DTOs
         public LockerDocumentDTO LockerDocument { get; set; }
     }
 
+
 }

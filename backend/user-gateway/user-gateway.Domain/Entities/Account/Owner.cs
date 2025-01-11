@@ -54,7 +54,7 @@ namespace user_gateway.Domain.Entities.Account
         public DateTime CreatedDate { get; set; } = DateTime.UtcNow;
 
         [Required]
-        public DateTime? ModifiedDate { get; set; } = DateTime.UtcNow;
+        public DateTime ModifiedDate { get; set; } = DateTime.UtcNow;
 
         [Required]
         public bool IsDeleted { get; set; } = false;
