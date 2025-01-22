@@ -10,6 +10,7 @@ namespace user_gateway.Domain.Entities.Account
         public Owner Owner { get; set; }
         public OwnerLogin OwnerLogin { get; set; }
         public OwnerDocument OwnerDocument { get; set; }
+        public List<LockerImage> LockerImages { get; set; }
 
     }
 

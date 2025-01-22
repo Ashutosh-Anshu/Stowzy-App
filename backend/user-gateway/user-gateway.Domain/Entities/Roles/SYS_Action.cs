@@ -16,18 +16,12 @@ namespace user_gateway.Domain.Entities.Roles
         public Guid ActionId { get; set; }
 
         public Guid MenuId { get; set; }
-
         public SYS_Menu Menu { get; set; }
 
         public string ActionName { get; set; } // e.g., "Create", "Edit", "Delete", "View", "Comment"
-
         public string Description { get; set; }
-
         public bool IsActive { get; set; } = true;
-
         public bool IsDeleted { get; set; } = false;
-
-        public ICollection<SYS_Menu> Roles { get; set; } = new List<SYS_Menu>();
     }
 
 

@@ -23,36 +23,44 @@ namespace user_gateway.DAL.Infrastructure.Repositories.Account
             _dataContext = dataContext;
         }
 
+
         public async Task<ApiMessageResponse> RegisterOwner(RegisterOwnerModel registerOwner)
         {
+
+            using var transaction = await _dataContext.Database.BeginTransactionAsync();
+
             try
             {
-                using (var connection = _dataContext.Database.GetDbConnection())
+
+                await _dataContext.Owners.AddAsync(registerOwner.Owner);
+                await _dataContext.SaveChangesAsync();
+
+                registerOwner.OwnerLogin.OwnerId = registerOwner.Owner.OwnerId;
+                registerOwner.OwnerDocument.OwnerId = registerOwner.Owner.OwnerId;
+                registerOwner.Locker.OwnerId = registerOwner.Owner.OwnerId;
+
+                await _dataContext.OwnerLogins.AddAsync(registerOwner.OwnerLogin);
+                await _dataContext.OwnerDocuments.AddAsync(registerOwner.OwnerDocument);
+                await _dataContext.Lockers.AddAsync(registerOwner.Locker);
+
+                foreach (var lockerImage in registerOwner.LockerImages)
                 {
-                    await connection.OpenAsync();
-
-                    using (var command = connection.CreateCommand())
-                    {
-                        command.CommandText = "RegisterOwner";
-                        command.CommandType = CommandType.StoredProcedure;
-
-                        command.Parameters.Add(new SqlParameter("@Locker", JsonConvert.SerializeObject(registerOwner.Locker)));
-                        command.Parameters.Add(new SqlParameter("@Owner", JsonConvert.SerializeObject(registerOwner.Owner)));
-                        command.Parameters.Add(new SqlParameter("@OwnerLogin", JsonConvert.SerializeObject(registerOwner.OwnerLogin)));
-                        command.Parameters.Add(new SqlParameter("@OwnerDocument", JsonConvert.SerializeObject(registerOwner.OwnerDocument)));
-
-                        var result = await command.ExecuteNonQueryAsync();
-
-                        return new ApiMessageResponse(result.ToString(), true, 200);
-
-                    }
+                    lockerImage.LockerId = registerOwner.Locker.LockerId;
                 }
+                await _dataContext.LockerImages.AddRangeAsync(registerOwner.LockerImages);
+
+                await _dataContext.SaveChangesAsync();
+                await transaction.CommitAsync();
+
+                return new ApiMessageResponse("Owner registered successfully.", true, 200);
             }
             catch (Exception ex)
             {
+                await transaction.RollbackAsync();
                 return new ApiMessageResponse($"Error: {ex.Message}", false, 500);
             }
         }
+
 
 
 

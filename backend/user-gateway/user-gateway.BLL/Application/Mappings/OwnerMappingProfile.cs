@@ -16,7 +16,12 @@ namespace user_gateway.BLL.Application.Mappings
 
 
             CreateMap<RegisterOwnerDTO, RegisterOwnerModel>()
-                   .ForMember(dest => dest.OwnerDocument, opt => opt.MapFrom(src => src.LockerDocument));
+                   .ForMember(dest => dest.OwnerDocument, opt => opt.MapFrom(src => src.LockerDocument))
+                   .ForMember(dest => dest.LockerImages, opt => opt.MapFrom(src => src.Locker.LockerImages))
+                   .ForMember(dest => dest.OwnerLogin, opt => opt.MapFrom(src => src.OwnerLogin))
+                   .ForMember(dest => dest.Owner, opt => opt.MapFrom(src => src.Owner))
+                   .ForMember(dest => dest.Locker, opt => opt.MapFrom(src => src.Locker));
+
 
             CreateMap<LockerDocumentDTO, OwnerDocument>();
 
@@ -24,8 +29,8 @@ namespace user_gateway.BLL.Application.Mappings
 
             CreateMap<OwnerLoginDTO, OwnerLogin>();
 
-            CreateMap<LockerDTO, Locker>()
-                .ForMember(dest => dest.LockerImages, opt => opt.MapFrom(src => src.LockerImages));
+            CreateMap<LockerDTO, Locker>();
+            //.ForMember(dest => dest.LockerImages, opt => opt.MapFrom(src => src.LockerImages));
 
             CreateMap<LockerImageDTO, LockerImage>();
 

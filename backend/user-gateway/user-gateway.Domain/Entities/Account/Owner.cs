@@ -59,6 +59,9 @@ namespace user_gateway.Domain.Entities.Account
         [Required]
         public bool IsDeleted { get; set; } = false;
 
+        [Required]
+        public string LevelType { get; set; }
+
         public List<Locker> Lockers { get; set; } = new List<Locker>();
 
         public OwnerDocument OwnerDocument { get; set; } = null!;
