@@ -20,19 +20,20 @@ namespace user_gateway.BLL.Application.Mappings
                    .ForMember(dest => dest.LockerImages, opt => opt.MapFrom(src => src.Locker.LockerImages))
                    .ForMember(dest => dest.OwnerLogin, opt => opt.MapFrom(src => src.OwnerLogin))
                    .ForMember(dest => dest.Owner, opt => opt.MapFrom(src => src.Owner))
-                   .ForMember(dest => dest.Locker, opt => opt.MapFrom(src => src.Locker));
+                   .ForMember(dest => dest.Locker, opt => opt.MapFrom(src => src.Locker))
+                   .ReverseMap();
 
 
-            CreateMap<LockerDocumentDTO, OwnerDocument>();
+            CreateMap<LockerDocumentDTO, OwnerDocument>().ReverseMap(); ;
 
-            CreateMap<OwnerDTO, Owner>();
+            CreateMap<OwnerDTO, Owner>().ReverseMap();
 
-            CreateMap<OwnerLoginDTO, OwnerLogin>();
+            CreateMap<OwnerLoginDTO, OwnerLogin>().ReverseMap(); ;
 
-            CreateMap<LockerDTO, Locker>();
+            CreateMap<LockerDTO, Locker>().ReverseMap(); ;
             //.ForMember(dest => dest.LockerImages, opt => opt.MapFrom(src => src.LockerImages));
 
-            CreateMap<LockerImageDTO, LockerImage>();
+            CreateMap<LockerImageDTO, LockerImage>().ReverseMap(); ;
 
         }
 

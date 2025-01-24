@@ -27,8 +27,7 @@ namespace user_gateway.BLL.Application.Services.Account.DTOs
         public string PostalCode { get; set; }
         public string Password { get; set; }
         public string LevelType { get; set; }
-
-        public string RoleId { get; set; }
+        public Guid RoleId { get; set; }
 
         [NotMapped]
         public IFormFile ProfileImage { get; set; }

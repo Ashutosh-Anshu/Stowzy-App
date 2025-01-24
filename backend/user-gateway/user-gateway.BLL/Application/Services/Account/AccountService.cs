@@ -107,6 +107,11 @@ namespace user_gateway.BLL.Application.Services.Account
 
                 }
 
+                var role = await _accountRepository.GetRoleByLevel(registerOwner.Owner.LevelType);
+                if(role != null)
+                {
+                    registerOwner.OwnerLogin.Role = role;
+                }
                 var result = _mapper.Map<RegisterOwnerModel>(registerOwner);
                 var response = await _accountRepository.RegisterOwner(result);
                 return await Task.FromResult(response);

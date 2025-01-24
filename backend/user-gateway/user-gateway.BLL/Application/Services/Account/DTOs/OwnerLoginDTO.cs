@@ -1,4 +1,6 @@
-﻿namespace user_gateway.BLL.Application.Services.Account.DTOs
+﻿using user_gateway.Domain.Entities.Roles;
+
+namespace user_gateway.BLL.Application.Services.Account.DTOs
 {
     public class OwnerLoginDTO
     {
@@ -17,6 +19,8 @@
         public string ProfileUrlPublicId { get; set; }
 
         public bool IsActive { get; set; } = true;
+
+        public SYS_Role Role { get; set; }
 
     }
 

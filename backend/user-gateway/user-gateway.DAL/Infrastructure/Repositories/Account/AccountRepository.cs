@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using user_gateway.Common.Helpers;
 using user_gateway.DAL.Infrastructure.Persistence;
 using user_gateway.Domain.Entities.Account;
+using user_gateway.Domain.Entities.Roles;
 
 namespace user_gateway.DAL.Infrastructure.Repositories.Account
 {
@@ -61,7 +62,11 @@ namespace user_gateway.DAL.Infrastructure.Repositories.Account
             }
         }
 
+        public async Task<SYS_Role> GetRoleByLevel(string levelType)
+        {
+            return await _dataContext.SYS_Roles.FirstOrDefaultAsync(r => r.LevelType == levelType);
 
+        }
 
 
     }
